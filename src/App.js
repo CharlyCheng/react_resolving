@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-
+import './App.css'
 class App extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +10,13 @@ class App extends Component {
 
   render () {
     return (
-      <h1>表白任素汐1111！</h1>
+      <div className='one'>
+        <div className='header'>爱1111111111111</div>
+        <div className='cc'>
+          <div className='left'></div>
+          <div className='right'></div>
+        </div>
+      </div>
     )
   }
 }
