@@ -1,9 +1,8 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
-import { render } from 'react-dom'
-import {Home} from './view'
+import HomeRouter from './router'
 
 ReactDOM.render (
-  <Home />,
+  <HomeRouter />,
   document.getElementById('root')
 )

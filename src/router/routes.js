@@ -1,22 +1,35 @@
 import { 
   Home, 
-  MyCenter 
+  MyCenter,
+  Coupon
 } from '../view'
+
 
 const routes = [
   { path: '/',
+    exact: true,
+    component: Home
+  },
+  { path: '/home',
+    exact: true,
     component: Home
   },
   { path: '/mycenter',
+    exact: true,
     component: MyCenter,
     routes: [
-      { path: '/mycenter/coupon',
-        component: MyCenter
+      { 
+        path: '/coupon',
+        exact: true,
+        component: Coupon
+      },
+      { 
+        path: '/mycenter/coupon2',
+        exact: true,
+        component: Coupon
       }
     ]
   }
 ]
 
-export {
-  routes
-}
+export default routes

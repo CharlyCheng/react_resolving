@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import './index.css'
 
-class MyCenter extends Component {
+class Coupon extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -10,13 +10,13 @@ class MyCenter extends Component {
   }
   componentDidMount() {
     console.log('====================================');
-    console.log('111');
+    console.log('222');
     console.log('====================================');
   }
   render () {
     return (
       <div className='one'>
-        <div className='header'>个人中心</div>
+        <div className='header'>优惠券</div>
         <div className='cc'>
           <div className='left'></div>
           <div className='right'></div>
@@ -26,4 +26,4 @@ class MyCenter extends Component {
   }
 }
 
-export default MyCenter
+export default Coupon

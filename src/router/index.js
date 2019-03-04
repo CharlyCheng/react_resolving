@@ -1,23 +1,28 @@
 import React, { Component} from 'react'
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
-  Switch,
-  Link
+  Switch
 } from 'react-router-dom'
-import { routes } from './routes' 
+import routes from './routes' 
 
-console.log('====================================');
-console.log('routes', routes);
-console.log('====================================');
-const RouteWithSubRoutes = (route) => (
-  <Route path={route.path} render={props => (
+export const RouteWithSubRoutes = (route) => (
+  <Route 
+    path={route.path}
+    exact={route.exact}
+    render={props => (
     // 把自路由向下传递来达到嵌套。
-    <route.component {...props} routes={route.routes}/>
+      <route.component {...props} routes={route.routes}/>
   )}/>
 )
 
-class router extends Component {
+export const RenderRoutes = ({routes}) => {
+  return (routes.map((route, i) => 
+    <RouteWithSubRoutes key={i} {...route} />)
+  )
+};
+
+class HomeRouter extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -27,17 +32,14 @@ class router extends Component {
 
   render () {
     return (
-      <Router>
-        <Switch>
-        {
-          routes.map((route, i) => (
-            <RouteWithSubRoutes key={i} {...route}/>
-          ))
-        }
-        </Switch>
-      </Router>
+        <Router>
+          <Switch>
+            <RenderRoutes routes={routes}/>
+             {/* <Route path={} Component={}/> */}
+          </Switch>
+        </Router>
     )
   }
 }
 
-export default router
+export default HomeRouter

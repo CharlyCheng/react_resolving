@@ -10,14 +10,12 @@ class Home extends Component {
     }
   }
   componentDidMount() {
-    console.log('====================================');
-    console.log('111');
-    console.log('====================================');
+    
   }
   render () {
     return (
       <div className='one'>
-        <div className='header'>哎</div>
+        <div className='header'>主页面</div>
         <div className='cc'>
           <div className='left'></div>
           <div className='right'></div>
