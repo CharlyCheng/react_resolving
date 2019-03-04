@@ -6,26 +6,23 @@ import {
 
 
 const routes = [
-  { path: '/',
+  { 
+    path: '/',
     exact: true,
     component: Home
   },
-  { path: '/home',
+  { 
+    path: '/home',
     exact: true,
     component: Home
   },
-  { path: '/mycenter',
+  { 
+    path: '/mycenter',
     exact: true,
     component: MyCenter,
-    routes: [
-      { 
-        path: '/mycenter/coupon',
-        exact: true,
-        component: Coupon
-      }
-    ]
   },
-  { path: '/mycenter/coupon',
+  { 
+    path: '/mycenter/coupon',
     exact: true,
     component: Coupon
   }
