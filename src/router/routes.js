@@ -24,6 +24,10 @@ const routes = [
         component: Coupon
       }
     ]
+  },
+  { path: '/mycenter/coupon',
+    exact: true,
+    component: Coupon
   }
 ]
 
