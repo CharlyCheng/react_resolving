@@ -19,12 +19,7 @@ const routes = [
     component: MyCenter,
     routes: [
       { 
-        path: '/coupon',
-        exact: true,
-        component: Coupon
-      },
-      { 
-        path: '/mycenter/coupon2',
+        path: '/mycenter/coupon',
         exact: true,
         component: Coupon
       }
