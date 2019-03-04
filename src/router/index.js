@@ -5,7 +5,17 @@ import {
   Switch,
   Link
 } from 'react-router-dom'
-import { Home } from '../view'
+import { routes } from './routes' 
+
+console.log('====================================');
+console.log('routes', routes);
+console.log('====================================');
+const RouteWithSubRoutes = (route) => (
+  <Route path={route.path} render={props => (
+    // 把自路由向下传递来达到嵌套。
+    <route.component {...props} routes={route.routes}/>
+  )}/>
+)
 
 class router extends Component {
   constructor(props) {
@@ -19,7 +29,11 @@ class router extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact component={Home} />
+        {
+          routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route}/>
+          ))
+        }
         </Switch>
       </Router>
     )

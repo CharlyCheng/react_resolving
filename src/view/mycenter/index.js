@@ -1,13 +1,19 @@
 import React, { Component} from 'react'
-import './App.css'
-class App extends Component {
+import { connect } from 'dva'
+import './index.css'
+
+class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
 
     }
   }
-
+  componentDidMount() {
+    console.log('====================================');
+    console.log('111');
+    console.log('====================================');
+  }
   render () {
     return (
       <div className='one'>
@@ -21,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Home

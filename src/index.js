@@ -1,9 +1,9 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
 import { render } from 'react-dom'
-import App from './App'
+import {Home} from './view'
 
 ReactDOM.render (
-  <App />,
+  <Home />,
   document.getElementById('root')
 )
