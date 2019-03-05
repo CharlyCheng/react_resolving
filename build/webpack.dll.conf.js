@@ -5,7 +5,7 @@ const resolve = (dir) => path.join(__dirname, '..', dir);
 
 module.exports = {
   entry: {
-      vendor: ['react', 'react-dom', 'lodash']
+      vendor: ['react', 'react-dom', 'react-router-dom', 'lodash']
   },
   output: {
       path: resolve('dist'),

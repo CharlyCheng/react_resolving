@@ -5,8 +5,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin= require('html-webpack-include-assets-plugin')
 const resolve = (dir) => path.join(__dirname, '..', dir);
-const manifest = require('../dist/dll/vendor.manifest')
 
 module.exports = {
   entry: {
@@ -115,18 +116,19 @@ module.exports = {
       template: resolve('/index.html'),
       filename: 'index.html'
     }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
+    // new MiniCssExtractPlugin({
+    //   // Options similar to the same options in webpackOptions.output
+    //   // both options are optional
+    //   filename: "[name].css",
+    //   chunkFilename: "[id].css"
+    // }),
 
     new webpack.HashedModuleIdsPlugin(),
     new ManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DllReferencePlugin({
-        manifest
+        // context: path.resolve(__dirname, '..'),
+        manifest: require('../dist/dll/vendor.manifest')
     }),
     new ParallelUglifyPlugin({
       workerCount: 3, //开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
@@ -142,6 +144,17 @@ module.exports = {
               reduce_vars: true, // 提取出出现多次但是没有定义成变量去引用的静态值
           }
       }
-    })
+    }),
+    // new AddAssetHtmlPlugin([{
+    //   filepath: path.resolve(__dirname,'../dist/dll/vendor.dll.js'), // 同webpack.dll.conf.js output
+    //   // outputPath: utils.assetsPath('js'),
+    //   // publicPath: path.posix.join(config.build.assetsPublicPath, 'static/js'),
+    //   // includeSourcemap: false,
+    //   // hash: true,
+    // }])
+    new HtmlWebpackIncludeAssetsPlugin({
+      assets: ['dll/vendor.dll.js'],
+      append: false
+    }),
   ]
 }
