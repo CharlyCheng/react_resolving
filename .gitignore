@@ -1,4 +1,8 @@
 node_modules
-*/node_modules
+libraries
 dist
+*/node_modules
+*/libraries
 */dist
+*.DS_Store
+*/npm-debug.log
