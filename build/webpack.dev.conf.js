@@ -5,7 +5,7 @@ const resolve = (dir) => path.join(__dirname, '..', dir);
 
 module.exports = merge(baseConfig, {
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'cheap-eval-source-map',
     devServer: {
         contentBase: resolve('dist'),
         host: 'localhost',

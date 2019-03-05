@@ -1,5 +1,5 @@
 import React, { Component} from 'react'
-import './index.css'
+import './index.scss'
 
 class Home extends Component {
   constructor(props) {
@@ -13,8 +13,8 @@ class Home extends Component {
   }
   render () {
     return (
-      <div className='one'>
-        <div className='header'>主页面</div>
+      <div className='one1'>
+        <div className='header'>主页面111</div>
         <div className='cc'>
           <div className='left'></div>
           <div className='right'></div>
