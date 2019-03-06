@@ -3,8 +3,6 @@ import './index.css'
 import { RenderRoutes } from '../../common/routerUntil'
 import {
   HashRouter as Router,
-  Route,
-  Switch,
   Link
 } from 'react-router-dom'
 import routeData from './routeData' 

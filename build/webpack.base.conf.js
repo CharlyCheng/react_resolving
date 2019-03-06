@@ -8,6 +8,7 @@ const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin= require('html-webpack-include-assets-plugin')
 const resolve = (dir) => path.join(__dirname, '..', dir);
+const HappyPack = require('happyPack')
 
 module.exports = {
   entry: {
@@ -91,12 +92,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         include: resolve('src'),
-        use: {
-          loader: 'babel-loader?cacheDirectory',
-          options: {
-            presets: ['@babel/preset-env']
-          }
-        }
+        use: 'happypack/loader?id=babel'
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -156,5 +152,17 @@ module.exports = {
       assets: ['dll/vendor.dll.js'],
       append: false
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new HappyPack({
+      id: 'babel',
+      //如何处理.js文件，和rules里的配置相同
+      loaders: [{
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: true,
+          presets: ['@babel/preset-env']
+        }
+      }]
+    })
   ]
 }
