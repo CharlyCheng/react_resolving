@@ -149,7 +149,7 @@ module.exports = {
     //   // hash: true,
     // }])
     new HtmlWebpackIncludeAssetsPlugin({
-      assets: ['dll/vendor.dll.js'],
+      assets: ['dist/dll/_dll_vendor.js'],
       append: false
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
