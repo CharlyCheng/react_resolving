@@ -10,7 +10,7 @@ module.exports = {
   output: {
       path: resolve('dist'),
       library: '_dll_[name]',
-      filename: 'dll/[name].dll.js'
+      filename: 'dll/_dll_[name].js'
   },
   plugins: [
     new CleanWebpackPlugin(['dist'], {
