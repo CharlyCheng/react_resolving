@@ -9,9 +9,7 @@ class Coupon extends Component {
     }
   }
   componentDidMount() {
-    console.log('====================================');
-    console.log('222');
-    console.log('====================================');
+    
   }
   render () {
     return (

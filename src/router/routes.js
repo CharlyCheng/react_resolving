@@ -20,12 +20,19 @@ const routes = [
     path: '/mycenter',
     exact: true,
     component: MyCenter,
+    // routes: [
+    //   { 
+    //     path: '/mycenter/coupon',
+    //     exact: true,
+    //     component: Coupon
+    //   }
+    // ]
   },
-  { 
-    path: '/mycenter/coupon',
-    exact: true,
-    component: Coupon
-  }
+  // { 
+  //   path: '/mycenter/coupon',
+  //   exact: true,
+  //   component: Coupon
+  // }
 ]
 
 export default routes

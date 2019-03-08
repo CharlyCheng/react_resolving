@@ -10,7 +10,8 @@ import configureStore from '../store'
 import routes from './routes'
 import {
   Home,
-  MyCenter
+  MyCenter,
+  Coupon
 } from '../view'
 
 class App extends Component {
@@ -30,9 +31,10 @@ class App extends Component {
       <Provider store={this.props.store}>
         <Router>
           <Switch>
-            <RenderRoutes routes={routes}/>
-            {/* <Route exact path="/" component={Home} />
-            <Route path='/mycenter' component={MyCenter}/> */}
+            {/* <RenderRoutes routes={routes}/> */}
+            <Route exact path="/" component={Home} />
+            <Route exact path='/mycenter' component={MyCenter}/>
+            <Route exact path='/mycenter/coupon' component={Coupon}/>
           </Switch>
         </Router>
       </Provider>

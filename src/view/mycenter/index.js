@@ -25,7 +25,7 @@ class MyCenter extends Component {
           <div className='left'></div>
           <div className='right'></div>
         </div>
-        <RenderRoutes routes={routeData}></RenderRoutes>
+        {/* <RenderRoutes routes={routeData}></RenderRoutes> */}
       </div>
     )
   }

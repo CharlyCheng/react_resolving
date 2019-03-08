@@ -9,6 +9,8 @@ const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const HtmlWebpackIncludeAssetsPlugin= require('html-webpack-include-assets-plugin')
 const resolve = (dir) => path.join(__dirname, '..', dir);
 const HappyPack = require('happyPack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 
 module.exports = {
   entry: {
@@ -30,7 +32,7 @@ module.exports = {
   },
   output: {
     path: resolve('dist'),
-    filename: 'js/[name].[hash:16].js',
+    filename: 'js/[name].[hash].js',
     library: '_dll_[name]',
     publicPath: '/'
   },
@@ -163,6 +165,7 @@ module.exports = {
           presets: ['@babel/preset-env']
         }
       }]
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ]
 }

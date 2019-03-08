@@ -1,4 +1,4 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setUser } from '../../store/homeList/actions'
 import './index.scss'
@@ -23,13 +23,23 @@ class Home extends Component {
     
     
   }
+  
   render () {
     return (
       <div className='one1'>
-        <div className='header'>主页面111</div>
-        <div className='cc'>
+        <div className='header'>主页面1222211</div>
+        {/* <div className='cc'>
           <div className='left'>{this.props.homeList.name}</div>
           <div className='right'></div>
+        </div> */}
+        <div className='aaaa'>
+        <div className='top'></div>
+        <div className='left'></div>
+        <div className='right'></div>
+        <div className='bottom'></div>
+        </div>
+        <div className='flex-test'>
+          <div className='flex-item'>11111</div>
         </div>
       </div>
     )
