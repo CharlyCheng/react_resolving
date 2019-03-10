@@ -2,6 +2,73 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setUser } from '../../store/homeList/actions'
 import './index.scss'
+const throlle = (fn, delay=2000) => {
+  let last = 0
+  return function () {
+    const content = this
+    const args = arguments
+    let now = +new Date()
+    if (now - last >= delay) {
+      last = now;
+      fn.apply(content, args);
+    }
+  }
+}
+const debounceThrolle = (fn, delay=800) => {
+  let last = 0, timer
+  return function () {
+    const content = this
+    const args = arguments
+    let now = +new Date()
+    if ( now - last < delay) {
+      clearTimeout(timer)
+      timer = setTimeout(function(){
+        last = now
+        fn.apply(content, args)
+      }, delay)
+    } else {
+      last = now
+      fn.apply(content, args)
+    }
+    if (timer){
+      clearTimeout(timer)
+    }
+    timer = setTimeout(function(){
+      fn.apply(content)
+    },delay)
+  }
+}
+const debounce = (fn, delay=2000) => {
+  let timer
+  return function () {
+    const content = this
+    if (timer){
+      clearTimeout(timer)
+    }
+    timer = setTimeout(function(){
+      fn.apply(content)
+    },delay)
+  }
+}
+const noDo = debounceThrolle(() => {
+  console.log('====================================');
+  console.log('1111');
+  console.log('====================================');
+})
+
+const doFd = debounce(() => {
+  console.log('====================================');
+  console.log('2222');
+  console.log('====================================');
+})
+
+const doJl = throlle(() => {
+  console.log('====================================');
+  console.log('3333');
+  console.log('====================================');
+})
+
+
 
 class Home extends Component {
   constructor(props) {
@@ -16,14 +83,12 @@ class Home extends Component {
     new Promise ( (resolve, reject) => {
       dispatch(setUser({'name': 'lcc'}, resolve));
     }).then(res => {
-      console.log('====================================');
-    console.log(this.props.homeList);
-    console.log('====================================');
+    //   console.log('====================================');
+    // console.log(this.props.homeList);
+    // console.log('====================================');
     })
-    
-    
   }
-  
+
   render () {
     return (
       <div className='one1'>
@@ -40,6 +105,18 @@ class Home extends Component {
         </div>
         <div className='flex-test'>
           <div className='flex-item'>11111</div>
+        </div>
+        <div>
+          <span>不防抖不节流防抖的input</span>
+          <input onKeyUp = {() => noDo()} type='text' />
+        </div>
+        <div>
+          <span>防抖的input</span>
+          <input onKeyUp = {() => doFd()} type='text' />
+        </div>
+        <div>
+          <span>节流的input</span>
+          <input onKeyUp = {() => doJl()}  type='text' />
         </div>
       </div>
     )
