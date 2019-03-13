@@ -159,8 +159,6 @@ module.exports = {
     }]),
     // new HtmlWebpackIncludeAssetsPlugin({
     //   assets: ['dll/_dll_vendor.js'],
-    //   outputPath: 'dll',
-    //   publicPath: 'vendor',
     //   append: false
     // }),
     new webpack.optimize.ModuleConcatenationPlugin(),
