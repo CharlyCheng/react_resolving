@@ -87,17 +87,43 @@ class Home extends Component {
     // console.log(this.props.homeList);
     // console.log('====================================');
     })
+    // const aaa = document.getElementById('aaa')
+    // const cc_one = document.getElementById('cc_one')
+    // console.log('====================================');
+    // console.log('aaa', aaa);
+    // console.log('====================================');
+
+    // aaa.addEventListener('click',(event) =>{
+    //   event.stopPropagation()
+    //   console.log('冒泡')
+    // },true);
+    // aaa.addEventListener('click',(event) =>{
+    //   console.log('捕获 ')
+    // },false)
+
+  //   var arr = [1,2,3]
+  //   var arr2 = arr.reduce((pre, next) => {
+  //     return pre + next
+  //   })
+  //  
+    let arr = [1,2,3,4];
+    let arr2= arr.forEach((item, index, array) => {
+      item = item + 1
+    })
+    console.log('====================================');
+   console.log(arr, arr2);
+   console.log('====================================');
   }
 
   render () {
     return (
-      <div className='one1'>
-        <div className='header'>主页面1222211</div>
+      <div className='one1' id='cc_one'>
+        <div className='header' id='aaa'>主页面1222211</div>
         {/* <div className='cc'>
           <div className='left'>{this.props.homeList.name}</div>
           <div className='right'></div>
         </div> */}
-        <div className='aaaa'>
+        <div className='aaaa' >
         <div className='top'></div>
         <div className='left'></div>
         <div className='right'></div>

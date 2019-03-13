@@ -1,10 +1,9 @@
 import React, { Component} from 'react'
 import ReactDOM from 'react-dom'
 import App from './router'
-import { Provider } from 'react-redux';
 import configureStore from './store'
 const store = configureStore();
-
+import 'antd-mobile/dist/antd-mobile.less'
 ReactDOM.render (
   // <Provider >
     <App store={store}/>,

@@ -8,17 +8,17 @@ module.exports = {
       vendor: ['react', 'react-dom', 'react-router-dom', 'lodash']
   },
   output: {
-      path: resolve('dist'),
+      path: resolve('public'),
       library: '_dll_[name]',
-      filename: 'dll/_dll_[name].[hash].js'
+      filename: 'dll/_dll_[name].js'
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], {
-      root: path.join(__dirname, '..')
+    new CleanWebpackPlugin(['dll'], {
+      root: resolve('public'),
     }),
     new webpack.DllPlugin({
       name: '_dll_[name]', //和output.library中一致，值就是输出的manifest.json中的 name值
-      path: path.join(__dirname, '../dist/dll', '[name].manifest.json')
+      path: path.join(__dirname, '../public/dll', '[name].manifest.json')
     })
   ]
 }

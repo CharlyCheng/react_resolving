@@ -92,13 +92,23 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        // exclude: /(node_modules|bower_components)/,
         include: resolve('src'),
         use: 'happypack/loader?id=babel'
       },
       {
-        test: /\.(sa|sc|c)ss$/,
-        use: ['style-loader','css-loader','sass-loader']
+        test: /\.ts|.tsx?$/,
+        use: [
+          {
+          "loader": "ts-loader",
+          }
+        ],
+        // exclude: /node_modules/,
+        include: resolve('src')
+      },
+      {
+        test: /\.(sa|sc|c|le)ss$/,
+        use: ['style-loader','css-loader','sass-loader', { loader: 'less-loader', options: { javascriptEnabled: true } }]
       }
     ]
   },
@@ -106,10 +116,9 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
-    // new CleanWebpackPlugin(['dist'], {
-    //   root: path.join(__dirname, '..'),
-    //   exclude: ['dist/dll']
-    // }),
+    new CleanWebpackPlugin(['dist'], {
+      root: path.join(__dirname, '..')
+    }),
     new HtmlWebpackPlugin({
       template: resolve('/index.html'),
       filename: 'index.html'
@@ -126,7 +135,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DllReferencePlugin({
         // context: path.resolve(__dirname, '..'),
-        manifest: require('../dist/dll/vendor.manifest')
+        manifest: require('../public/dll/vendor.manifest')
     }),
     new ParallelUglifyPlugin({
       workerCount: 3, //开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
@@ -143,17 +152,17 @@ module.exports = {
           }
       }
     }),
-    // new AddAssetHtmlPlugin([{
-    //   filepath: path.resolve(__dirname,'../dist/dll/vendor.dll.js'), // 同webpack.dll.conf.js output
-    //   // outputPath: utils.assetsPath('js'),
-    //   // publicPath: path.posix.join(config.build.assetsPublicPath, 'static/js'),
-    //   // includeSourcemap: false,
-    //   // hash: true,
-    // }])
-    new HtmlWebpackIncludeAssetsPlugin({
-      assets: ['dll/_dll_vendor.js'],
-      append: false
-    }),
+    new AddAssetHtmlPlugin([{
+      filepath: path.resolve(__dirname,'../public/dll/_dll_vendor.js'), // 同webpack.dll.conf.js output
+      outputPath: 'dll',
+      publicPath: 'dll',
+    }]),
+    // new HtmlWebpackIncludeAssetsPlugin({
+    //   assets: ['dll/_dll_vendor.js'],
+    //   outputPath: 'dll',
+    //   publicPath: 'vendor',
+    //   append: false
+    // }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HappyPack({
       id: 'babel',
@@ -162,10 +171,13 @@ module.exports = {
         loader: 'babel-loader',
         options: {
           cacheDirectory: true,
-          presets: ['@babel/preset-env']
+          presets: ['@babel/preset-env'],
+          "plugins": [
+             // `style: true` 会加载 less 文件
+          ]
         }
       }]
     }),
-    new BundleAnalyzerPlugin()
+    // new BundleAnalyzerPlugin()
   ]
 }

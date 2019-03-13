@@ -11,7 +11,8 @@ import routes from './routes'
 import {
   Home,
   MyCenter,
-  Coupon
+  Coupon,
+  Hello
 } from '../view'
 
 class App extends Component {
@@ -35,6 +36,8 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path='/mycenter' component={MyCenter}/>
             <Route exact path='/mycenter/coupon' component={Coupon}/>
+            <Route exact path='/tstest' component={Hello}/>
+
           </Switch>
         </Router>
       </Provider>
