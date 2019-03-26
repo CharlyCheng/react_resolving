@@ -1,7 +1,9 @@
-import { 
-  Home, 
-  MyCenter,
-  Coupon
+import {
+  Home,
+  ReactLongList,
+  TypeScript,
+  LifeCycle,
+  ReactTime
 } from '../view'
 
 
@@ -17,22 +19,25 @@ const routes = [
     component: Home
   },
   { 
-    path: '/mycenter',
+    path: '/reactLongList',
     exact: true,
-    component: MyCenter,
-    // routes: [
-    //   { 
-    //     path: '/mycenter/coupon',
-    //     exact: true,
-    //     component: Coupon
-    //   }
-    // ]
+    component: ReactLongList,
   },
-  // { 
-  //   path: '/mycenter/coupon',
-  //   exact: true,
-  //   component: Coupon
-  // }
+  { 
+    path: '/typeScript',
+    exact: true,
+    component: TypeScript,
+  },
+  { 
+    path: '/reactTime',
+    exact: true,
+    component: ReactTime,
+  },
+  { 
+    path: '/lifeCycle',
+    exact: true,
+    component: LifeCycle,
+  },
 ]
 
 export default routes

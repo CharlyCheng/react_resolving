@@ -1,11 +1,11 @@
 import React, { Component} from 'react'
-import './index.css'
 import { RenderRoutes } from '../../common/routerUntil'
 import {
   HashRouter as Router,
   Link
 } from 'react-router-dom'
-import routeData from './routeData' 
+
+
 class MyCenter extends Component {
   constructor(props) {
     super(props)

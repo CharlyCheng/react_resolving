@@ -28,6 +28,7 @@ module.exports = {
     }
   },
   externals: {
+    'react': 'react',
     // 'react': resolve('node_modules/react/cjs/react.production.min.js')
   },
   output: {

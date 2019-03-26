@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+.reactLongList {
+  display: flex;
+  flex-direction: column;
+  .house_text {
+    font-size: 48px;
+    height: 200px;
+  }
+}

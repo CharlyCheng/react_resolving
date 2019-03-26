@@ -1,11 +1,12 @@
-import Home from './home'
-import MyCenter from './mycenter'
-import Coupon from './coupon'
-import Hello from './ts'
-
+import Home from './Home'
+import ReactLongList from './ReactLongList'
+import TypeScript from './TypeScript'
+import LifeCycle from './LifeCycle'
+import ReactTime from './ReactTime'
 export {
   Home,
-  MyCenter,
-  Coupon,
-  Hello
+  ReactLongList,
+  TypeScript,
+  LifeCycle,
+  ReactTime
 }
