@@ -9,6 +9,7 @@
 
 html,body{
   min-height: 100%
+
 }
 #root {
   min-height: 100%
@@ -18,6 +19,7 @@ html,body{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   .pri_btn {
     width: 100%;
     height: 80px;
