@@ -6,10 +6,8 @@ const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
-const HtmlWebpackIncludeAssetsPlugin= require('html-webpack-include-assets-plugin')
 const resolve = (dir) => path.join(__dirname, '..', dir);
 const HappyPack = require('happyPack')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 
 module.exports = {
@@ -79,7 +77,6 @@ module.exports = {
       chunks: 'initial',
       minSize: 0,
       minChunks: 1,
-      
       cacheGroups: {
         vendor: {
           test: /react|lodash/,
@@ -136,7 +133,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DllReferencePlugin({
         // context: path.resolve(__dirname, '..'),
-        manifest: require('../public/dll/vendor.manifest')
+        manifest: require('../public/dll_static/vendor.manifest')
     }),
     new ParallelUglifyPlugin({
       workerCount: 3, //开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
@@ -154,14 +151,10 @@ module.exports = {
       }
     }),
     new AddAssetHtmlPlugin([{
-      filepath: path.resolve(__dirname,'../public/dll/_dll_vendor.js'), // 同webpack.dll.conf.js output
+      filepath: path.resolve(__dirname,'../public/dll_static/_dll_vendor.js'), // 同webpack.dll.conf.js output
       outputPath: 'dll',
       publicPath: 'dll',
     }]),
-    // new HtmlWebpackIncludeAssetsPlugin({
-    //   assets: ['dll/_dll_vendor.js'],
-    //   append: false
-    // }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new HappyPack({
       id: 'babel',

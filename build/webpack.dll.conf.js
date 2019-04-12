@@ -10,15 +10,15 @@ module.exports = {
   output: {
       path: resolve('public'),
       library: '_dll_[name]',
-      filename: 'dll/_dll_[name].js'
+      filename: 'dll_static/_dll_[name].js'
   },
   plugins: [
-    new CleanWebpackPlugin(['dll'], {
+    new CleanWebpackPlugin(['dll_static'], {
       root: resolve('public'),
     }),
     new webpack.DllPlugin({
       name: '_dll_[name]', //和output.library中一致，值就是输出的manifest.json中的 name值
-      path: path.join(__dirname, '../public/dll', '[name].manifest.json')
+      path: path.join(__dirname, '../public/dll_static', '[name].manifest.json')
     })
   ]
 }

@@ -2,8 +2,7 @@ import React, { Component} from 'react'
 import {
   HashRouter as Router,
   Route,
-  Switch,
-  hashHistory
+  Switch
 } from 'react-router-dom'
 import { RenderRoutes } from '../common/routerUntil'
 import { Provider } from 'react-redux';
@@ -26,7 +25,7 @@ class App extends Component {
   render () {
     return (
       <Provider store={this.props.store}>
-        <Router history={hashHistory}>
+        <Router>
           <Switch>
             <RenderRoutes routes={routes}/>
           </Switch>
