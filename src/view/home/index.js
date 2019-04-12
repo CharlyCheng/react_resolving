@@ -25,6 +25,10 @@ class Home extends Component {
         {
           'name': 'react setState Props实践',
           'path': 'reactTime'
+        },
+        {
+          'name': 'http缓存',
+          'path': 'httpCache'
         }
       ]
     }

@@ -3,7 +3,8 @@ import {
   ReactLongList,
   TypeScript,
   LifeCycle,
-  ReactTime
+  ReactTime,
+  HttpCache
 } from '../view'
 
 
@@ -38,6 +39,11 @@ const routes = [
     exact: true,
     component: LifeCycle,
   },
+  {
+    path: '/httpCache',
+    exact: true,
+    component: HttpCache,
+  }
 ]
 
 export default routes
