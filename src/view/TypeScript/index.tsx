@@ -26,7 +26,7 @@ type State = Readonly<typeof initialState>
 class Hello extends React.Component<{}, State > {
   readonly state: State = initialState;
   componentDidMount(){
-    Toast.info('爱你')
+    
   }
   public render () {
     const { clicksCount } = this.state;

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setUser } from '../../store/homeList/actions'
-import { Button } from 'antd-mobile'
+import { setUser } from 'store/homeList/actions'
+import { Button, Toast } from 'antd-mobile'
+import { routerMap } from 'common/constant'
+// import { Loading } from 'component'
 import './index.scss'
 
 class Home extends Component {
@@ -9,32 +11,7 @@ class Home extends Component {
     super(props)
     this.state = {
       user: '',
-      routerMap: [
-        {
-          'name': 'react生命周期',
-          'path': 'LifeCycle'
-        },
-        {
-          'name': 'react长列表优化',
-          'path': 'reactLongList'
-        },
-        {
-          'name': 'react TypeScript实践',
-          'path': 'reactLongList'
-        },
-        {
-          'name': 'react setState Props实践',
-          'path': 'reactTime'
-        },
-        {
-          'name': 'http缓存',
-          'path': 'httpCache'
-        },
-        {
-          'name': 'react 基础',
-          'path': 'reactBasic'
-        }
-      ]
+      routerMap: routerMap
     }
   }
   goDetail(url) {

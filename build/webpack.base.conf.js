@@ -22,7 +22,7 @@ module.exports = {
       resolve('node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
     ],
     alias: {
-      // 'react': resolve('node_modules/react/cjs/react.production.min.js')
+      '@src': resolve('src')
     }
   },
   externals: {

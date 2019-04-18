@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import Loadable from 'react-loadable'
+import { Loading } from 'component'
 
-const Loading = () => <div>哈哈哈</div>
 export const LoadableComponent = (pathCom) => {
   return Loadable({
     loader: () => import(`../../src/view/${pathCom}`),

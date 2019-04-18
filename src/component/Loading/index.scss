@@ -1,0 +1,26 @@
+
+
+.bk_loading_content {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  background-color: rgba(58, 58, 58, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .loading_icon {
+    width: 32px;
+    height: 32px;
+    animation: cirle-loading 1s linear infinite;
+  }
+}
+
+@keyframes cirle-loading {
+  100% {
+    transform: rotate(360deg)
+  }
+}
