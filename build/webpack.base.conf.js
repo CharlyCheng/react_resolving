@@ -2,6 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
@@ -109,6 +110,7 @@ module.exports = {
       },
       {
         test: /\.(sa|sc|c|le)ss$/,
+        // exclude: /node_modules/,
         use: [
           'style-loader',
           'css-loader',
@@ -116,7 +118,21 @@ module.exports = {
           'sass-loader', 
           { loader: 'less-loader', options: { javascriptEnabled: true }},
         ]
-      }
+      },
+      // {
+      //   test: /\.css$/,
+      //   exclude: resolve('node_modules'),
+      //   use:  [
+      //     {
+      //       loader: MiniCssExtractPlugin.loader,
+      //       options: {
+      //         publicPath: '../',
+      //         hmr: process.env.NODE_ENV === 'development',
+      //       },
+      //     },
+      //     'css-loader'
+      //   ]
+      // }
     ]
   },
   plugins: [
@@ -130,12 +146,12 @@ module.exports = {
       template: resolve('/index.html'),
       filename: 'index.html'
     }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
+    // new MiniCssExtractPlugin({
+    //   // Options similar to the same options in webpackOptions.output
+    //   // both options are optional
+    //   filename: "[name].[contenthash:8].css",
+    //   // chunkFilename: "[id].css"
+    // }),
 
     new webpack.HashedModuleIdsPlugin(),
     new ManifestPlugin(),
