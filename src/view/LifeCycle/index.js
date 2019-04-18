@@ -1,10 +1,6 @@
 import React, { Component} from 'react'
 import { Button } from 'antd-mobile'
-import { RenderRoutes } from '../../common/routerUntil'
-import {
-  HashRouter as Router,
-  Link
-} from 'react-router-dom'
+
 let count = 0
 const log = function(e){
   console.log(this)

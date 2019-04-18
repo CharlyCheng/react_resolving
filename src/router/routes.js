@@ -1,55 +1,58 @@
-import {
-  Home,
-  ReactLongList,
-  TypeScript,
-  LifeCycle,
-  ReactTime,
-  HttpCache,
-  ReactBasic
-} from '../view'
+import React, { Component} from 'react'
+import Loadable from 'react-loadable'
+
+const Loading = () => <div>哈哈哈</div>
+export const LoadableComponent = (pathCom) => {
+  return Loadable({
+    loader: () => import(`../../src/view/${pathCom}`),
+    loading: Loading
+  })
+}
 
 
 const routes = [
   { 
     path: '/',
     exact: true,
-    component: Home
+    component: LoadableComponent('Home')
   },
   { 
     path: '/home',
     exact: true,
-    component: Home
+    component: LoadableComponent('Home')
   },
   { 
     path: '/reactLongList',
     exact: true,
-    component: ReactLongList,
+    component: LoadableComponent('ReactLongList'),
   },
   { 
     path: '/typeScript',
     exact: true,
-    component: TypeScript,
+    component: LoadableComponent('TypeScript'),
   },
   { 
     path: '/reactTime',
     exact: true,
-    component: ReactTime,
+    component: LoadableComponent('TypeScript'),
   },
   { 
     path: '/lifeCycle',
     exact: true,
-    component: LifeCycle,
+    component: LoadableComponent('TypeScript'),
   },
   {
     path: '/httpCache',
     exact: true,
-    component: HttpCache,
+    component: LoadableComponent('HttpCache'),
   },
   {
     psth: '/reactBasic',
     exact: true,
-    component: ReactBasic,
+    component: LoadableComponent('HttpCache')
   }
 ]
+
+
 
 export default routes

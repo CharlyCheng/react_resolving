@@ -16,7 +16,7 @@ module.exports = {
     app: './src/index.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.vue', '.json', '.less', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.vue', '.json', '.less', '.styl', '.ts', '.tsx'],
     modules: [ // 优化模块查找路径
       resolve('src'),
       resolve('node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
@@ -32,6 +32,7 @@ module.exports = {
   output: {
     path: resolve('dist'),
     filename: 'js/[name].[hash].js',
+    chunkFilename:'[name].[chunkhash].js',
     // library: '_dll_[name]',
     publicPath: '/'
   },
@@ -89,8 +90,11 @@ module.exports = {
   module: {
     rules: [
       {
+        include: path.resolve("node_modules", "lodash"),
+        sideEffects: false
+      },
+      {
         test: /\.js$/,
-        // exclude: /(node_modules|bower_components)/,
         include: resolve('src'),
         use: 'happypack/loader?id=babel'
       },
@@ -101,12 +105,17 @@ module.exports = {
           "loader": "ts-loader",
           }
         ],
-        // exclude: /node_modules/,
         include: resolve('src')
       },
       {
         test: /\.(sa|sc|c|le)ss$/,
-        use: ['style-loader','css-loader','sass-loader', { loader: 'less-loader', options: { javascriptEnabled: true } }]
+        use: [
+          'style-loader',
+          'css-loader',
+          // { loader: 'postcss-loader', options: { parser: 'sugarss', exec: true } },
+          'sass-loader', 
+          { loader: 'less-loader', options: { javascriptEnabled: true }},
+        ]
       }
     ]
   },
@@ -159,6 +168,8 @@ module.exports = {
       }
     }),
     
+    // 作用域提升(scope hoisting)
+    // 由于 Scope Hoisting 需要分析出模块之间的依赖关系，因此源码必须采用 ES6 模块化语句，不然它将无法生效
     new webpack.optimize.ModuleConcatenationPlugin(),
     // 开启happpack 多进程babel-loader
     new HappyPack({

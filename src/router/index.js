@@ -4,10 +4,28 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-import { RenderRoutes } from '../common/routerUntil'
+
 import { Provider } from 'react-redux';
 import configureStore from '../store'
 import routes from './routes'
+
+const RouteWithSubRoutes = (route) => (
+  <Switch>
+    <Route 
+      path={route.path}
+      exact={route.exact}
+      render={props => (
+      // 把自路由向下传递来达到嵌套。
+        <route.component {...props} routes={route.routes}/>
+    )}/>
+  </Switch>
+)
+
+const RenderRoutes = ({routes}) => {
+  return (routes.map((route, i) => 
+    <RouteWithSubRoutes key={i} {...route} />)
+  )
+};
 
 
 class App extends Component {
