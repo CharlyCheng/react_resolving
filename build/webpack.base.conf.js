@@ -153,7 +153,8 @@ module.exports = {
       includeSourcemap: false
     }]),
     new ParallelUglifyPlugin({
-      workerCount: 3, //开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
+      // workerCount: 3, //开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
+      cacheDir: path.resolve(__dirname,'../public/uglify-cache'),
       uglifyJS: {
           output: {
               beautify: false, //不需要格式化
