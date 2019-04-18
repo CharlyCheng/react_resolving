@@ -18,16 +18,17 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.vue', '.json', '.less', '.styl', '.ts', '.tsx'],
     modules: [ // 优化模块查找路径
-      resolve('src'),
       resolve('node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
     ],
+    mainFields: ["browser", "module", "main"],
     alias: {
-      '@src': resolve('src')
+      '@src': resolve('src'),
+      // '@react': path.resolve(__dirname, '/node_modules/react/umd/react.production.min.js')
     }
   },
   externals: {
     // 'react': 'react',
-    // 'react': resolve('node_modules/react/cjs/react.production.min.js')
+    // 'react': resolve('/node_modules/react/umd/react.production.min.js')
   },
   output: {
     path: resolve('dist'),
@@ -89,14 +90,28 @@ module.exports = {
   // },
   module: {
     rules: [
-      {
-        include: path.resolve("node_modules", "lodash"),
-        sideEffects: false
-      },
+      // happpack编译src下的js并且缓存结果
       {
         test: /\.js$/,
         include: resolve('src'),
         use: 'happypack/loader?id=babel'
+      },
+      // happpack编译src下的css并且缓存结果
+      {
+        test: /\.(sa|sc|c|le)ss$/,
+        include: resolve('src'),
+        excluded: [node_modules],
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader', 
+          { 
+            loader: 'less-loader', 
+            options: { 
+              javascriptEnabled: true 
+            }
+          },
+        ]
       },
       {
         test: /\.ts|.tsx?$/,
@@ -108,14 +123,8 @@ module.exports = {
         include: resolve('src')
       },
       {
-        test: /\.(sa|sc|c|le)ss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          // { loader: 'postcss-loader', options: { parser: 'sugarss', exec: true } },
-          'sass-loader', 
-          { loader: 'less-loader', options: { javascriptEnabled: true }},
-        ]
+        include: path.resolve("node_modules", "lodash"),
+        sideEffects: false
       }
     ]
   },
@@ -130,12 +139,12 @@ module.exports = {
       template: resolve('/index.html'),
       filename: 'index.html'
     }),
-    new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "[name].css",
-      chunkFilename: "[id].css"
-    }),
+    // new MiniCssExtractPlugin({
+    //   // Options similar to the same options in webpackOptions.output
+    //   // both options are optional
+    //   filename: "[name].css",
+    //   chunkFilename: "[id].css"
+    // }),
 
     new webpack.HashedModuleIdsPlugin(),
     new ManifestPlugin(),
@@ -187,5 +196,19 @@ module.exports = {
         }
       }]
     })
+    // new HappyPack({
+    //   id: 'css',
+    //   //如何处理.js文件，和rules里的配置相同
+    //   loaders: [{
+    //     loader: 'babel-loader',
+    //     options: {
+    //       cacheDirectory: true,
+    //       presets: ['@babel/preset-env'],
+    //       "plugins": [
+    //          // `style: true` 会加载 less 文件
+    //       ]
+    //     }
+    //   }]
+    // })
   ]
 }

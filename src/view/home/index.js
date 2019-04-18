@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { setUser } from 'store/homeList/actions'
 import { Button, Toast } from 'antd-mobile'
-import { routerMap } from 'common/constant'
-// import { Loading } from 'component'
+import { routerMap } from '@src/common/constant'
+import { setUser } from '@src/store/homeList/actions'
 import './index.scss'
 
 class Home extends Component {

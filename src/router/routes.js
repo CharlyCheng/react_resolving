@@ -1,6 +1,6 @@
-import React, { Component} from 'react'
+import React  from 'react'
 import Loadable from 'react-loadable'
-import { Loading } from 'component'
+import { Loading } from '@src/component'
 
 export const LoadableComponent = (pathCom) => {
   return Loadable({

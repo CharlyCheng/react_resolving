@@ -13,6 +13,12 @@ module.exports = {
   entry: {
       vendor: ['react', 'react-dom', 'react-router-dom', 'lodash']
   },
+  resolve: {
+    modules: [ // 优化模块查找路径
+      resolve('node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
+    ],
+    mainFields: ["browser", "module", "main"]
+  },
   output: {
       path: resolve('public'),
       library: '_dll_[name]',
