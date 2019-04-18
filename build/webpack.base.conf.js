@@ -32,7 +32,7 @@ module.exports = {
   output: {
     path: resolve('dist'),
     filename: 'js/[name].[hash].js',
-    chunkFilename:'[name].[chunkhash].js',
+    // chunkFilename:'[name].[chunkhash].js',
     // library: '_dll_[name]',
     publicPath: '/'
   },
@@ -147,7 +147,7 @@ module.exports = {
     }),
     // 文件动态添加到html中
     new AddAssetHtmlPlugin([{
-      filepath: path.resolve(__dirname,'../public/dll_static/_dll_vendor.js'),
+      filepath: path.resolve(__dirname,'../public/dll_static/*.js'),
       outputPath: 'dll_static',
       publicPath: 'dll_static',
       includeSourcemap: false
