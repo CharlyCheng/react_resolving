@@ -6,14 +6,14 @@ const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ParallelUglifyPlugin = require('webpack-parallel-uglify-plugin')
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
+const HtmlWebpackIncludeAssetsPlugin= require('html-webpack-include-assets-plugin')
 const resolve = (dir) => path.join(__dirname, '..', dir);
 const HappyPack = require('happyPack')
 
 
 module.exports = {
   entry: {
-    app: './src/index.js',
-    vendors: ['lodash']
+    app: './src/index.js'
   },
   resolve: {
     extensions: ['.js', '.jsx', '.vue', '.json', '.less', '.ts', '.tsx'],
@@ -32,7 +32,7 @@ module.exports = {
   output: {
     path: resolve('dist'),
     filename: 'js/[name].[hash].js',
-    library: '_dll_[name]',
+    // library: '_dll_[name]',
     publicPath: '/'
   },
   // optimization: {
@@ -71,21 +71,21 @@ module.exports = {
   //     }
   //   }
   // },
-  optimization: {
-    runtimeChunk: 'single',
-    splitChunks: {
-      chunks: 'initial',
-      minSize: 0,
-      minChunks: 1,
-      cacheGroups: {
-        vendor: {
-          test: /react|lodash/,
-          name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  },
+  // optimization: {
+  //   runtimeChunk: 'single',
+  //   splitChunks: {
+  //     chunks: 'initial',
+  //     minSize: 0,
+  //     minChunks: 1,
+  //     cacheGroups: {
+  //       vendor: {
+  //         test: /react|lodash/,
+  //         name: 'vendors',
+  //         chunks: 'all'
+  //       }
+  //     }
+  //   }
+  // },
   module: {
     rules: [
       {
@@ -121,20 +121,28 @@ module.exports = {
       template: resolve('/index.html'),
       filename: 'index.html'
     }),
-    // new MiniCssExtractPlugin({
-    //   // Options similar to the same options in webpackOptions.output
-    //   // both options are optional
-    //   filename: "[name].css",
-    //   chunkFilename: "[id].css"
-    // }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
 
     new webpack.HashedModuleIdsPlugin(),
     new ManifestPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    // 引用动态链接库
     new webpack.DllReferencePlugin({
         // context: path.resolve(__dirname, '..'),
         manifest: require('../public/dll_static/vendor.manifest')
     }),
+    // 文件动态添加到html中
+    new AddAssetHtmlPlugin([{
+      filepath: path.resolve(__dirname,'../public/dll_static/_dll_vendor.js'),
+      outputPath: 'dll_static',
+      publicPath: 'dll_static',
+      includeSourcemap: false
+    }]),
     new ParallelUglifyPlugin({
       workerCount: 3, //开启几个子进程去并发的执行压缩。默认是当前运行电脑的 CPU 核数减去1
       uglifyJS: {
@@ -150,12 +158,9 @@ module.exports = {
           }
       }
     }),
-    new AddAssetHtmlPlugin([{
-      filepath: path.resolve(__dirname,'../public/dll_static/_dll_vendor.js'), // 同webpack.dll.conf.js output
-      outputPath: 'dll',
-      publicPath: 'dll',
-    }]),
+    
     new webpack.optimize.ModuleConcatenationPlugin(),
+    // 开启happpack 多进程babel-loader
     new HappyPack({
       id: 'babel',
       //如何处理.js文件，和rules里的配置相同
@@ -169,7 +174,6 @@ module.exports = {
           ]
         }
       }]
-    }),
-    // new BundleAnalyzerPlugin()
+    })
   ]
 }

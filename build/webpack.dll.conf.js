@@ -1,3 +1,9 @@
+/**
+ * @description: DLLPlugin 链式引用预编译三方库
+ * @param {type} 
+ * @return: 李长城
+ */
+
 const webpack = require("webpack")
 const path = require('path')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
