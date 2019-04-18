@@ -4,7 +4,8 @@ import {
   TypeScript,
   LifeCycle,
   ReactTime,
-  HttpCache
+  HttpCache,
+  ReactBasic
 } from '../view'
 
 
@@ -43,6 +44,11 @@ const routes = [
     path: '/httpCache',
     exact: true,
     component: HttpCache,
+  },
+  {
+    psth: '/reactBasic',
+    exact: true,
+    component: ReactBasic,
   }
 ]
 

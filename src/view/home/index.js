@@ -29,6 +29,10 @@ class Home extends Component {
         {
           'name': 'http缓存',
           'path': 'httpCache'
+        },
+        {
+          'name': 'react 基础',
+          'path': 'reactBasic'
         }
       ]
     }

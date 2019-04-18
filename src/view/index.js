@@ -4,6 +4,7 @@ import TypeScript from './TypeScript'
 import LifeCycle from './LifeCycle'
 import ReactTime from './ReactTime'
 import HttpCache from './HttpCache'
+import ReactBasic from './ReactBasic'
 
 export {
   Home,
@@ -11,5 +12,6 @@ export {
   TypeScript,
   LifeCycle,
   ReactTime,
-  HttpCache
+  HttpCache,
+  ReactBasic
 }
