@@ -37,57 +37,40 @@ module.exports = {
     // library: '_dll_[name]',
     publicPath: '/'
   },
-  // optimization: {
-  //   minimize: true,
-  //   runtimeChunk: {
-  //     name: 'manifest'
-  //   },
-  //   splitChunks: {
-  //     chunks: "all",
-  //     minSize: 20000,
-  //     //其他入口chunk引用的次数
-  //     minChunks: 1,
-  //     maxAsyncRequests: 5,
-  //     maxInitialRequests: 3,
-  //     //默认使用name + hash生成文件名
-  //     name: true,
-  //     automaticNameDelimiter: '~',
-  //     //使用自定义缓存组
-  //     cacheGroups: {
-  //         //公共模块
-  //         commons: {
-  //           name: 'common',
-  //           //缓存优先级设置
-  //           priority: 10,
-  //           //从入口chunk提取
-  //           chunks: 'initial'
-  //         },
-  //         //提取第三方库
-  //         vendors: {
-  //             //符合条件的放入当前缓存组
-  //             test: /[\\/]node_modules[\\/]/,
-  //             name: "vendors",
-  //             chunks: "all",
-  //             priority: 20
-  //         },
-  //     }
-  //   }
-  // },
-  // optimization: {
-  //   runtimeChunk: 'single',
-  //   splitChunks: {
-  //     chunks: 'initial',
-  //     minSize: 0,
-  //     minChunks: 1,
-  //     cacheGroups: {
-  //       vendor: {
-  //         test: /react|lodash/,
-  //         name: 'vendors',
-  //         chunks: 'all'
-  //       }
-  //     }
-  //   }
-  // },
+  optimization: {
+    minimize: true,
+    runtimeChunk: {
+      name: 'manifest'
+    },
+    splitChunks: {
+      chunks: "async",
+      minSize: 30000,
+      //其他入口chunk引用的次数
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      //默认使用name + hash生成文件名
+      name: true,
+      automaticNameDelimiter: '~',
+      //使用自定义缓存组
+      cacheGroups: {
+          //公共模块
+          default: {
+            minChunks: 2,
+            priority: -20,
+            reuseExistingChunk: true
+          },
+          //提取第三方库
+          vendors: {
+              //符合条件的放入当前缓存组
+              test: /[\\/]node_modules[\\/]/,
+              name: "vendors",
+              chunks: "all",
+              priority: -10
+          },
+      }
+    }
+  },
   module: {
     rules: [
       {
@@ -119,20 +102,21 @@ module.exports = {
           { loader: 'less-loader', options: { javascriptEnabled: true }},
         ]
       },
-      // {
-      //   test: /\.css$/,
-      //   exclude: resolve('node_modules'),
-      //   use:  [
-      //     {
-      //       loader: MiniCssExtractPlugin.loader,
-      //       options: {
-      //         publicPath: '../',
-      //         hmr: process.env.NODE_ENV === 'development',
-      //       },
-      //     },
-      //     'css-loader'
-      //   ]
-      // }
+      {
+        test: /\.css$/,
+        exclude: resolve('node_modules'),
+        use:  [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          // MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      }
     ]
   },
   plugins: [
@@ -146,12 +130,12 @@ module.exports = {
       template: resolve('/index.html'),
       filename: 'index.html'
     }),
-    // new MiniCssExtractPlugin({
-    //   // Options similar to the same options in webpackOptions.output
-    //   // both options are optional
-    //   filename: "[name].[contenthash:8].css",
-    //   // chunkFilename: "[id].css"
-    // }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].[contenthash:8].css",
+      // chunkFilename: "[id].css"
+    }),
 
     new webpack.HashedModuleIdsPlugin(),
     new ManifestPlugin(),
