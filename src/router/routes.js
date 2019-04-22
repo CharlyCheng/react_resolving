@@ -34,12 +34,12 @@ const routes = [
   { 
     path: '/reactTime',
     exact: true,
-    component: LoadableComponent('TypeScript'),
+    component: LoadableComponent('ReactTime'),
   },
   { 
     path: '/lifeCycle',
     exact: true,
-    component: LoadableComponent('TypeScript'),
+    component: LoadableComponent('LifeCycle'),
   },
   {
     path: '/httpCache',

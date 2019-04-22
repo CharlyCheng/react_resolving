@@ -5,7 +5,7 @@ import {
 const createUser = (user) => user;
 
 const homeList = (state = {}, action) => {
-  console.log(action);
+  // console.log(action);
   switch (action.type) {
     case TYPE.SET_USER:
       // 根据type来更新用户信息

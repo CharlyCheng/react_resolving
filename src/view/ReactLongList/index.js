@@ -23,7 +23,7 @@ class ReactLongList extends Component {
     })
   }
   componentDidMount() {
-    this.getList([], 100)
+    this.getList([], 1000)
   }
 
   render () {
@@ -32,7 +32,7 @@ class ReactLongList extends Component {
       <div className='reactLongList'>
         {
           list.map ( (item,index) => {
-            return <div className='house_text'>{index}.{item.name}{item.age}</div>
+            return <div className='house_text'></div>
           })
         }
       </div>
