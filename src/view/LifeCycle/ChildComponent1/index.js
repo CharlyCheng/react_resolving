@@ -1,7 +1,7 @@
 import React, { Component} from 'react'
 import { Button } from 'antd-mobile'
-
-class ChildTest extends Component {
+import { Consumer } from '@src/store/context'
+class ChildComponent1 extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -54,12 +54,12 @@ class ChildTest extends Component {
     } = this.state
     return (
       <div className='one'>
-          Name: {this.props.name}
-          Age: {age}
-          <Button onClick={this.props.handleEvent.bind(this)} type='primary' className='catch_me'>child来点我啊</Button>  
+          <Consumer>
+            {context => <p>{context.msg}</p>}
+          </Consumer>
       </div>
     )
   }
 }
 
-export default ChildTest
+export default ChildComponent1
