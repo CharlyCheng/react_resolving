@@ -17,7 +17,7 @@ class Home extends Component {
   goDetail(url) {
     this.props.history.push(url)
   }
-  add() {
+  add      () {
     console.log('====================================');
     console.log('执行add了');
     console.log('====================================');
