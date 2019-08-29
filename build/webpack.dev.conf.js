@@ -13,7 +13,7 @@ module.exports = merge(baseConfig, {
         hot: true,
         port: 3006
     },
-    plugins: [
-        new BundleAnalyzerPlugin()
-    ]
+    // plugins: [
+    //     new BundleAnalyzerPlugin()
+    // ]
 })

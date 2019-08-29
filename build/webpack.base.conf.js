@@ -1,3 +1,9 @@
+/*
+ * @Author: 李长城
+ * @Description: charlycheng
+ * @Date: 2019-08-13 18:31:04
+ * @LastEditTime: 2019-08-23 09:52:10
+ */
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
@@ -80,6 +86,12 @@ module.exports = {
       {
         test: /\.js$/,
         include: resolve('src'),
+        // use: {
+        //   loader: 'babel-loader',
+        //   options: {
+        //     presets: ['@babel/preset-env']
+        //   }
+        // }
         use: 'happypack/loader?id=babel'
       },
       {
@@ -104,7 +116,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: resolve('node_modules'),
+        // exclude: resolve('node_modules'),
         use:  [
           {
             loader: MiniCssExtractPlugin.loader,
