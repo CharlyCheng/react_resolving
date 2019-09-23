@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+.bk_page_content {
+  display: flex;
+  .pre_next_on {
+    height: 34px;
+    padding: 0 18px;
+    border: 1px solid #e1e2e3;
+    cursor: pointer;
+    text-align: center;
+    line-height: 34px;
+    text-decoration: none;
+    overflow: hidden;
+    margin-right: 9px;
+    background: #fff;
+    color: #1890ff;
+  }
+  .page_content_num {
+    display: flex;
+    .page_num {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #e1e2e3;
+      cursor: pointer;
+      text-align: center;
+      line-height: 34px;
+      color: #1890ff;
+      margin-right: 9px;
+    }
+    .page_num_noborder {
+      border: 0;
+      color: #000;
+    }
+  }
+}

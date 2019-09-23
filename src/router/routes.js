@@ -49,7 +49,7 @@ const routes = [
   {
     psth: '/reactBasic',
     exact: true,
-    component: LoadableComponent('HttpCache')
+    component: LoadableComponent('ReactBasic')
   }
 ]
 
