@@ -17,13 +17,12 @@ const HtmlWebpackIncludeAssetsPlugin= require('html-webpack-include-assets-plugi
 const resolve = (dir) => path.join(__dirname, '..', dir);
 const HappyPack = require('happyPack')
 
-
 module.exports = {
   entry: {
     app: './src/index.js'
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.vue', '.json', '.less', '.styl', '.ts', '.tsx'],
+    extensions: ['.js', '.jsx', '.json', '.less', '.styl', '.ts', '.tsx'],
     modules: [ // 优化模块查找路径
       resolve('src'),
       resolve('node_modules') // 指定node_modules所在位置 当你import 第三方模块时 直接从这个路径下搜索寻找
@@ -86,13 +85,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: resolve('src'),
-        // use: {
-        //   loader: 'babel-loader',
-        //   options: {
-        //     presets: ['@babel/preset-env']
-        //   }
-        // }
-        use: 'happypack/loader?id=babel'
+        use: 'happypack/loader?id=babel' //使用happypack编译速度
       },
       {
         test: /\.ts|.tsx?$/,

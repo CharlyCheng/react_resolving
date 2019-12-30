@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setUser } from 'store/homeList/actions'
 import { Button, Toast } from 'antd-mobile'
-import { routerMap } from 'common/constant'
-// import { Loading } from 'component'
+import { routerMap } from 'router/routerMap'
 import './index.scss'
 
 class Home extends Component {
@@ -14,21 +13,22 @@ class Home extends Component {
       routerMap: routerMap
     }
   }
+
   goDetail(url) {
     this.props.history.push(url)
   }
-  add      () {
+
+  add() {
     console.log('====================================');
     console.log('执行add了');
     console.log('====================================');
   }
+
   componentDidMount() {
     const { dispatch } = this.props;
     // 更新用户信息
     new Promise ( (resolve, reject) => {
       dispatch(setUser({'name': 'lcc'}, resolve));
-    }).then(res => {
-      
     })
   }
 

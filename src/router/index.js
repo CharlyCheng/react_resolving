@@ -6,7 +6,6 @@ import {
 } from 'react-router-dom'
 
 import { Provider } from 'react-redux';
-import configureStore from '../store'
 import routes from './routes'
 
 const RouteWithSubRoutes = (route) => (
@@ -25,7 +24,7 @@ const RenderRoutes = ({routes}) => {
   return (routes.map((route, i) => 
     <RouteWithSubRoutes key={i} {...route} />)
   )
-};
+}
 
 
 class App extends Component {
