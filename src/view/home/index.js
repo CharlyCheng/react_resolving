@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { setUser } from 'store/homeList/actions'
 import { Button, Toast } from 'antd-mobile'
-import { routerMap } from 'router/routerMap'
+import { homeRouterMap } from 'router/routes'
 import './index.scss'
 
 class Home extends Component {
@@ -63,6 +63,6 @@ const mapStateToProps = (state, ownProps) => {
 //   }
 // }
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Home)
 
 // export default Home

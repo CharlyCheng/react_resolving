@@ -4,9 +4,8 @@ import {
   Route,
   Switch
 } from 'react-router-dom'
-
-import { Provider } from 'react-redux';
-import routes from './routes'
+import { Provider } from 'react-redux'
+import { routes } from './routes'
 
 const RouteWithSubRoutes = (route) => (
   <Switch>
@@ -26,17 +25,12 @@ const RenderRoutes = ({routes}) => {
   )
 }
 
-
-class App extends Component {
+class RouterContent extends Component {
   constructor(props) {
     super(props)
     this.state = {
 
     }
-  }
-  
-  componentDidMount() {
-    
   }
 
   render () {
@@ -52,4 +46,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default RouterContent
