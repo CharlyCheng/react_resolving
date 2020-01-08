@@ -9,42 +9,48 @@ class ReactTime extends Component {
     this.state = {
       val: 0
     }
+    console.log('constructor');
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // 没错，这是一个static
+    console.log('getDerivedStateFromProps');
+    // console.log('====================================');
+    // console.log('nextProps', nextProps, 'prevState', prevState);
+    // console.log('====================================');
   }
 
   componentDidMount() {
-    this.setState({
-      val: this.state.val + 1
-    }, () => {
-      console.log('====================================');
-      console.log('a', this.state.val);
-      console.log('====================================');
-    })
-    console.log('====================================');
-    console.log(this.state.val);
-    console.log('====================================');
-    this.setState({
-      val: this.state.val + 1
-    })
-    console.log('====================================');
-    console.log(this.state.val);
-    console.log('====================================');
-    setTimeout(() => {
-      this.setState({
-        val: this.state.val + 1
-      })
-      console.log('====================================');
-      console.log(this.state.val);
-      console.log('====================================');
-      this.setState({
-        val: this.state.val + 1
-      })
-      console.log('====================================');
-      console.log(this.state.val);
-      console.log('====================================');
-    },0);
+    console.log('componentDidMount');
+  }
+
+  shouldComponentUpdate() {
+    console.log('shouldComponentUpdate');
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+  	console.log('componentWillUpdate');
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log('getSnapshotBeforeUpdate')
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log('componentDidUpdate');
+    // console.log('====================================');
+    // console.log('prevProps', prevProps, 'prevState', prevState, 'snapshot', snapshot);
+    // console.log('====================================');
+  }
+  
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
   }
 
   render () {
+    console.log('====================================');
+    console.log('render');
+    console.log('====================================');
     const { 
       val
     } = this.state

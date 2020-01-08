@@ -10,7 +10,7 @@ class Home extends Component {
     super(props)
     this.state = {
       user: '',
-      routerMap: routerMap
+      homeRouterMap: homeRouterMap
     }
   }
 
@@ -33,12 +33,12 @@ class Home extends Component {
   }
 
   render () {
-    const { routerMap } = this.state
+    const { homeRouterMap } = this.state
     return (
       <div className='home_content'>
       <input onKeyUp={this.add}/>
         {
-          routerMap.map( item => {
+          homeRouterMap.map( item => {
             return <Button key={1} className='pri_btn' type='primary' onClick={this.goDetail.bind(this,item.path)}>{item.name}</Button>
           })
         }
