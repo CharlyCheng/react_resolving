@@ -12,7 +12,13 @@ class ReactBasic extends Component {
   }
 
   componentDidMount() {
-    
+    const rightOne = document.getElementById('rightOne')
+
+    rightOne.addEventListener("webkitAnimationEnd", function(){ //动画结束时事件 
+      console.log(2); 
+    }, false); 
+
+    this.handleRequestAnimation()
   }
 
   handleClick() {
@@ -22,6 +28,35 @@ class ReactBasic extends Component {
       isShow: !isShow,
       isOut: isShow
     })
+  }
+
+  // 每隔两秒输出一个log
+  handleLog(name) {
+    this.name = name
+  }
+
+  // requestAnimation 实现动画
+  handleRequestAnimation() {
+    const animateDiv = document.querySelector('.animate-div')
+    let start = null
+
+    // 回调函数
+    function step(timestamp) {
+      console.log('11');
+      
+        if (!start) start = timestamp
+        let progress = timestamp - start
+        console.log('animateDiv.style', animateDiv.style.left);
+        
+        animateDiv.style.left = progress + 'px'
+        if (progress < 350) {
+            // 在动画没有结束前，递归渲染
+            window.requestAnimationFrame(step)
+        }
+    }
+
+    // 第一帧渲染
+    window.requestAnimationFrame(step)
   }
 
   typeClass() {
@@ -34,8 +69,9 @@ class ReactBasic extends Component {
     return (
       <React.Fragment>
         <div onClick={this.handleClick.bind(this)}>打开</div>
-        <div className={`basic ${this.state.isShow ? 'basic_animation_right': ''} ${this.state.isOut  ? 'basic_animation_rightout': ''}`}></div>
+        <div id="rightOne" className={`basic ${this.state.isShow ? 'basic_animation_right': ''} ${this.state.isOut  ? 'basic_animation_rightout': ''}`}></div>
         <div className='roate_transform'>1111</div>
+        <div className='animate-div'>2222</div>
       </React.Fragment>
     )
   }

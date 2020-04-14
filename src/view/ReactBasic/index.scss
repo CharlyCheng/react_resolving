@@ -73,3 +73,15 @@
     transform: rotate(360);
   }
 }
+
+.animate-div {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+}
