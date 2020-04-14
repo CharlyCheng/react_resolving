@@ -9,15 +9,17 @@
   height: 667px;
   background: red;
   position: absolute;
-  right: 0;
+  right: -100%;
 }
 
 .basic_animation_right {
+  right: 0%;
   animation: slideInRight 0.3s linear;
   animation-fill-mode: forwards;
 }
 
 .basic_animation_rightout {
+  right: 0%;
   animation: slideOutRight 0.3s linear;
   animation-fill-mode: forwards;
 }
@@ -48,4 +50,26 @@
   }
 }
 
+.roate_transform {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  animation: slideRoate 0.3s infinite linear;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+@keyframes slideRoate {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: rotate(360);
+    transform: rotate(360);
+  }
+}

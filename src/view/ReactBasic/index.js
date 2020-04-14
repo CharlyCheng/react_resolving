@@ -6,7 +6,8 @@ class ReactBasic extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      isShow: false
+      isShow: false,
+      isOut: false
     }
   }
 
@@ -18,12 +19,13 @@ class ReactBasic extends Component {
     const { isShow } = this.state
 
     this.setState({
-      isShow: !isShow
+      isShow: !isShow,
+      isOut: isShow
     })
   }
 
   typeClass() {
-    const { isShow } = this.state
+    const { isShow, isOut } = this.state
     return isShow ? `basic basic_animation_right`: `basic basic_animation_rightout`
   }
 
@@ -32,9 +34,8 @@ class ReactBasic extends Component {
     return (
       <React.Fragment>
         <div onClick={this.handleClick.bind(this)}>打开</div>
-        <div className={this.typeClass()}>
-
-        </div>
+        <div className={`basic ${this.state.isShow ? 'basic_animation_right': ''} ${this.state.isOut  ? 'basic_animation_rightout': ''}`}></div>
+        <div className='roate_transform'>1111</div>
       </React.Fragment>
     )
   }
