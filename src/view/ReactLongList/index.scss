@@ -6,10 +6,28 @@
 .reactLongList {
   display: flex;
   flex-direction: column;
+  position: relative;
   .house_text {
     font-size: 24px;
     height: 200px;
     background: url('http://img.ljcdn.com/growth-activity/1555075706583.jpg') no-repeat;
     background-size: 100% 100%
+  }
+
+  .next_ctn {
+    width: 100%;
+    height: 400px;
+  }
+  .next_ctn——11 {
+    width: 100%;
+    height: 500px;
+    border: 1px solid red;
+  }
+  .Tabs {
+    width: 100%;
+    height: 20px;
+    background: red;
+    position: sticky;
+    top: 0;
   }
 }

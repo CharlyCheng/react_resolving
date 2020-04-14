@@ -45,7 +45,7 @@ export const routes = [
     component: LoadableComponent('HttpCache'),
   },
   {
-    psth: '/reactBasic',
+    path: '/reactBasic',
     exact: true,
     component: LoadableComponent('ReactBasic')
   }
