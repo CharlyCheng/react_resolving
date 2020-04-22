@@ -48,6 +48,11 @@ export const routes = [
     path: '/reactBasic',
     exact: true,
     component: LoadableComponent('ReactBasic')
+  },
+  {
+    path: '/reactAnimation',
+    exact: true,
+    component: LoadableComponent('ReactAnimation')
   }
 ]
 
@@ -75,5 +80,9 @@ export const homeRouterMap = [
   {
     'name': 'react 基础',
     'path': 'reactBasic'
+  },
+  {
+    'name': 'react 动画css',
+    'path': 'reactAnimation'
   }
 ]

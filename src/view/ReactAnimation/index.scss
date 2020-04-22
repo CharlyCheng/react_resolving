@@ -1,0 +1,231 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+.animation_ctn {
+  
+}
+
+.basic {
+  width: 300px;
+  height: 667px;
+  background: red;
+  position: absolute;
+  right: -100%;
+}
+
+.basic_animation_right {
+  right: 0%;
+  animation: slideInRight 0.3s linear;
+  animation-fill-mode: forwards;
+}
+
+.basic_animation_rightout {
+  right: 0%;
+  animation: slideOutRight 0.3s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+.roate_transform {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  animation: slideRoate 5s ease;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes slideRoate {
+  from {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  to {
+    visibility: hidden;
+    -webkit-transform: rotate(3600deg);
+    transform: rotate(3600deg);
+  }
+}
+
+.animate-div {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+}
+
+@keyframes move_animation {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(150px); }
+  100% { transform: translateX(300px) }    
+}
+
+.move-animate-div {
+  width: 60px;
+  height: 40px;
+  border-radius: 5px;
+  background: #92B901;
+  left: 0;
+  position: absolute;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  animation: move_animation 2s linear 2s infinite alternate;
+}
+
+
+.dianzan {
+  width: 100px;
+  height: 100px;
+  border: 1px solid red;
+}
+
+.praise_bubble{
+  width:100px;
+  height:200px;
+  position:relative;
+  background-color:#f4f4f4;
+  border: 1px solid red;
+}
+.bubble{
+    position: absolute;
+    left:50%;
+    bottom:0;
+    width: 10px;
+    height: 10px;
+    border: 1px solid blue;
+}
+
+
+.bl1{
+  animation: bubble_y 2s linear 1 forwards,
+  bubble_big 2s linear 1 forwards,
+  bubble_1 2s linear 1 forwards,
+}
+.bl2{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl3{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl4{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl5{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl6{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl7{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl8{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl9{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+.bl10{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+
+.bl11{
+  animation: bubble_y 4s linear 1 forwards,
+  bubble_big 4s linear 1 forwards,
+  bubble_1 4s linear 1 forwards,
+}
+
+@keyframes bubble_big {
+  0% {
+    transform: scale(.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes bubble_y {
+  0% {
+    margin-bottom:0;
+    transform: scale(.3);
+  }
+  75%{
+      opacity:1;
+  }
+  100% {
+      margin-bottom:200px;
+      opacity:0;
+      transform: scale(1);
+  }
+}
+
+@keyframes bubble_1 {
+  0% {
+  }
+  25% {
+      margin-left:-8px;
+  }
+  50% {
+      margin-left:8px
+  }
+  75% {
+      margin-left:-15px
+  }
+  100% {
+      margin-left:15px
+  }
+}
