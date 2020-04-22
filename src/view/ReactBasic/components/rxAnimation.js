@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
-
+import '../index.scss'
 
 class RxAnimation extends Component {
   constructor(props){
     super(props)
     this.state = {
       isShow: false,
-      isOut: false
+      isOut: false,
+      roateDeg: 7200
     }
   }
 
@@ -26,16 +27,15 @@ class RxAnimation extends Component {
   }
 
   render() {
+    const { roateDeg } = this.state
+
     return (
       <div className='animation_ctn'>
         <div>
           <div className="DrawRightSwitch" onClick={this.handleClick.bind(this)}>打开滑动滑出的抽屉</div>
           <div className={this.typeClass()}></div>
         </div>
-        <React.Fragment>
-          <div className='roate_transform'>一直转的</div>
-        </React.Fragment>
-        <div className='animate-div'>动起来</div>
+        <div className='roate_transform' style={{transform: `rotate(${roateDeg}deg`}}>一直转的</div>
         <div className='move-animate-div'>我是一棵树</div>
       </div>
     )
