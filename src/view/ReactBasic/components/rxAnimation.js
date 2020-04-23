@@ -7,7 +7,7 @@ class RxAnimation extends Component {
     this.state = {
       isShow: false,
       isOut: false,
-      roateDeg: 7200
+      roateDeg: 1
     }
   }
 
@@ -22,7 +22,18 @@ class RxAnimation extends Component {
     
     this.setState({
       isShow: !isShow,
-      isOut: isShow
+      isOut: isShow,
+      roateDeg: 7200 //转个7200度
+    })
+  }
+  
+  // 监听动画转盘转完后，恢复到最初值
+  handleTransitionEnd() {
+    console.log('====================================');
+    console.log('111');
+    console.log('====================================');
+    this.setState({
+      roateDeg: 0
     })
   }
 
@@ -32,10 +43,10 @@ class RxAnimation extends Component {
     return (
       <div className='animation_ctn'>
         <div>
-          <div className="DrawRightSwitch" onClick={this.handleClick.bind(this)}>打开滑动滑出的抽屉</div>
+          <div className="DrawRightSwitch"  onClick={this.handleClick.bind(this)}>打开滑动滑出的抽屉</div>
           <div className={this.typeClass()}></div>
         </div>
-        <div className='roate_transform' style={{transform: `rotate(${roateDeg}deg`}}>一直转的</div>
+        <div className='roate_transform' onTransitionEnd={this.handleTransitionEnd.bind(this)} style={{transform: (roateDeg ? `rotate(${roateDeg}deg)`: `${roateDeg}`)}}>一直转的</div>
         <div className='move-animate-div'>我是一棵树</div>
       </div>
     )
