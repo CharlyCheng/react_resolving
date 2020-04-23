@@ -23,7 +23,7 @@ class RxAnimation extends Component {
     this.setState({
       isShow: !isShow,
       isOut: isShow,
-      roateDeg: 7200 //转个7200度
+      roateDeg: Math.floor(Math.random() * 10) * 360 //转个7200度
     })
   }
   
@@ -33,13 +33,14 @@ class RxAnimation extends Component {
     console.log('111');
     console.log('====================================');
     this.setState({
-      roateDeg: 0
+      roateDeg: null
     })
   }
 
   render() {
     const { roateDeg } = this.state
-
+    console.log('roateDeg', roateDeg);
+    
     return (
       <div className='animation_ctn'>
         <div>
