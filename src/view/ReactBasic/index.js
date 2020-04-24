@@ -5,6 +5,7 @@
 import React, { Component} from 'react'
 import _ from "lodash"
 import RxAnimation from './components/rxAnimation'
+import ExposureTrack from './components/ExposureTrack/index'
 import './index.scss'
 
 class ReactBasic extends Component {
@@ -17,9 +18,10 @@ class ReactBasic extends Component {
 
   render () {
     return (
-      <React.Fragment>
+      <div className="react-basic-ctn">
         <RxAnimation />
-      </React.Fragment>
+        <ExposureTrack />
+      </div>
     )
   }
 }
